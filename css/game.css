@@ -35,7 +35,6 @@ header {
 .card {
     aspect-ratio: 3/4;
     width: 100%;
-    background-color: #333;
     border-radius: 5px;
     position: relative;
     transition: all 400ms ease;
@@ -51,6 +50,7 @@ header {
     background-position: center;
     border: 2px solid red;
     border-radius: 5px;
+    transition: all 400ms ease;
 }
 
 .front{
