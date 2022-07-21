@@ -1,4 +1,7 @@
 const grid = document.querySelector('.grid');
+const spanPlayer = document.querySelector('.player');
+const timer = document.querySelector('.timer');
+const refreshgame = document.querySelector('.refreshgamevisibility');
 
 let src = '../audio/risada.mp3';
 let audio = new Audio(src);
@@ -29,7 +32,12 @@ const checkEndGame = () => {
   const disabledCards = document.querySelectorAll('.disabled-card');
 
   if (disabledCards.length === 20) {
-    alert('Você conseguiu, parabéns');
+    clearInterval(this.loop);
+    alert(`Parabéns, ${localStorage.getItem('player')}! Você ganhou em ${timer.innerHTML} segundos!`);
+    refreshgame.style.visibility = 'visible';
+    refreshgame.onclick = () => {
+      window.location.reload();
+    }
   }
 }
 
@@ -103,7 +111,7 @@ const createCard = (character) => {
 const loadGame = () => {
   const duplicateCharacters = [ ...characters, ...characters ];
 
-  const shuffledArray = duplicateCharacters.sort(() => Math.random() - 0.5);
+  const shuffledArray = duplicateCharacters.sort(() => Math.random());
 
   shuffledArray.forEach((character) => {
     const card = createCard(character);
@@ -111,4 +119,16 @@ const loadGame = () => {
   });
 }
 
-loadGame();
+const startTimer = () => {
+  this.loop = setInterval(() => {
+    timer.innerHTML = `${parseInt(timer.innerHTML) + 1}`;
+  }, 1000);
+}
+
+window.onload = () => {
+
+  spanPlayer.innerHTML = localStorage.getItem('player');
+  startTimer();
+  loadGame();
+}
+
