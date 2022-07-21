@@ -33,7 +33,7 @@ const checkEndGame = () => {
 
   if (disabledCards.length === 20) {
     clearInterval(this.loop);
-    alert(`Parabéns, ${localStorage.getItem('player')}! Você ganhou em ${timer.innerHTML} segundos!`);
+    window.alert(`Parabéns, ${localStorage.getItem('player')}! Você ganhou em ${timer.innerHTML} segundos!`);
     refreshgame.style.visibility = 'visible';
     refreshgame.onclick = () => {
       window.location.reload();
