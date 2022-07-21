@@ -34,6 +34,7 @@ header {
 .card {
     aspect-ratio: 3/4;
     width: 100%;
+    border: 2px solid red;
     border-radius: 5px;
     position: relative;
     transition: all 400ms ease;
@@ -47,8 +48,6 @@ header {
     position: absolute;
     background-size: cover;
     background-position: center;
-    border: 2px solid red;
-    border-radius: 5px;
     transition: all 400ms ease;
 }
 
@@ -60,7 +59,6 @@ header {
     background-image: url('../images/back.png');
     backface-visibility: hidden;
 }
-
 .reveal-card{
     transform: rotateY(180deg);
 }
