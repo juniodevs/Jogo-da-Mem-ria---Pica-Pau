@@ -5,6 +5,7 @@ const refreshgame = document.querySelector('.refreshgamevisibility');
 
 let src = '../audio/risada.mp3';
 let audio = new Audio(src);
+let contador = 0;
 
 const characters = [
     'biruta',
@@ -44,6 +45,7 @@ const checkEndGame = () => {
 const checkCards = () => {
   const firstCharacter = firstCard.getAttribute('data-character');
   const secondCharacter = secondCard.getAttribute('data-character');
+  startTimer();
 
   if (firstCharacter === secondCharacter) {
 
@@ -61,7 +63,7 @@ const checkCards = () => {
 
       firstCard.classList.remove('reveal-card');
       secondCard.classList.remove('reveal-card');
-
+      
       firstCard = '';
       secondCard = '';
 
@@ -120,15 +122,16 @@ const loadGame = () => {
 }
 
 const startTimer = () => {
+  if (contador === 0) {
   this.loop = setInterval(() => {
     timer.innerHTML = `${parseInt(timer.innerHTML) + 1}`;
   }, 1000);
+  contador = 1;
+}
 }
 
 window.onload = () => {
 
   spanPlayer.innerHTML = localStorage.getItem('player');
-  startTimer();
   loadGame();
 }
-
